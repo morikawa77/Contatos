@@ -8,7 +8,7 @@ namespace Contatos
         {
             InitializeComponent();
 
-            MainPage = new ContatosPage();
+            MainPage = new Contatos.Pages.PessoaEdicaoPage();
         }
 
         protected override void OnStart()

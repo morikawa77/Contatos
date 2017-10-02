@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.PessoaEdicaoPage" BackgroundColor="DimGray" >
+    <ContentPage.Content>
+        <StackLayout Padding="10, 30, 10,10" Margin="0" VerticalOptions="StartAndExpand">
+            <Label Text="Edição de Pessoas" />
+            <Label x:Name="lblNome" Text="Nome: "/>
+            <Entry x:Name="txtNome" Placeholder="Informe seu nome aqui " />
+
+            <Label x:Name="lblEmail" Text="Email: " />
+            <Entry x:Name="Email" Placeholder="Informe seu email aqui " />
+
+            <Label x:Name="lblTelefone" Text="Telefone: " />
+            <Entry x:Name="txtTelefone" Placeholder="Informe seu telefone aqui" />
+
+            <Label x:Name="lblObservacao" Text="Observação" />
+            <Editor x:Name="txtObservacao" />
+            <Button Text="Salvar" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ></Button>
+            <Button Text="Cancelar" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
