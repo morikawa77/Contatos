@@ -4,18 +4,24 @@
         <StackLayout Padding="10, 30, 10,10" Margin="0" VerticalOptions="StartAndExpand">
             <Label Text="Edição de Pessoas" />
             <Label x:Name="lblNome" Text="Nome: "/>
-            <Entry x:Name="txtNome" Placeholder="Informe seu nome aqui " />
+            <Entry x:Name="txtNome" Placeholder="Informe seu nome aqui " 
+            Text="{Binding Nome}"/>
 
             <Label x:Name="lblEmail" Text="Email: " />
-            <Entry x:Name="Email" Placeholder="Informe seu email aqui " />
+            <Entry x:Name="Email" Placeholder="Informe seu email aqui " 
+            Text="{Binding Email}"/>
 
             <Label x:Name="lblTelefone" Text="Telefone: " />
-            <Entry x:Name="txtTelefone" Placeholder="Informe seu telefone aqui" />
+            <Entry x:Name="txtTelefone" Placeholder="Informe seu telefone aqui" 
+            Text="{Binding Telefone}"/>
 
             <Label x:Name="lblObservacao" Text="Observação" />
-            <Editor x:Name="txtObservacao" />
-            <Button Text="Salvar" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ></Button>
-            <Button Text="Cancelar" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Button>
+            <Editor x:Name="txtObservacao" Text="{Binding Observacao}" HeightRequest="80"/>
+            <Button Text="Salvar" x:Name="btnSalvar" 
+            Clicked="btn_Salvar_Clicked"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Center" ></Button>
+            <Button Text="Cancelar" x:Name="btnCancelar" 
+            Clicked="btn_Cancelar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
