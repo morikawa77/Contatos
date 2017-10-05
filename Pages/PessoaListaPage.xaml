@@ -9,7 +9,7 @@
         <StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand">
                 <Label Text="Lista de Pessoas" Margin="15,15,0,0" FontSize="24" FontAttributes="Bold"/>
-                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true">
+                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="false">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
