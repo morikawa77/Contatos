@@ -1,5 +1,30 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.PessoaListaPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contatos.Pages.PessoaListaPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="tbiNovo" Order="Default" Text="Novo" Priority="0" Clicked="tbiNovo_Clicked" /> 
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="Lista de Pessoas" Margin="15,15,0,0" FontSize="24" FontAttributes="Bold"/>
+                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Nome}" Margin="15,10,0,0" />
+                                    <Label Text="{Binding Email}"  Margin="15,0,-3,0"  />
+                                    <Label Text="{Binding Telefone}" Margin="15,0,0,0"  />
+                                    <Label Text="{Binding Observacao}" Margin="15,0,0,10"  />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,9 @@ namespace Contatos
         {
             InitializeComponent();
 
-            MainPage = new Contatos.Pages.PessoaEdicaoPage();
+            //MainPage = new Contatos.Pages.PessoaListaPage();
+
+            MainPage = new NavigationPage(new Contatos.Pages.PessoaListaPage());
         }
 
         protected override void OnStart()
@@ -25,5 +27,7 @@ namespace Contatos
         {
             // Handle when your app resumes
         }
+
+
     }
 }

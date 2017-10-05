@@ -1,24 +1,20 @@
-﻿using System;
+﻿using Contatos.Models;
+using Contatos.ViewModels;
+using System;
 using System.Collections.Generic;
-using Contatos.Models;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Contatos.Pages
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PessoaEdicaoPage : ContentPage
     {
-        private Pessoa item; 
-        
-        void btn_Salvar_Clicked(object sender, System.EventArgs e)
-        {
-            DisplayAlert("Contatos", "Nome do Contato: " + txtNome.Text, "Fechar");
-        }
-
-        void btn_Cancelar_Clicked(object sender, System.EventArgs e)
-        {
-            
-        }
-
+        public PessoaViewModelMem ViewModel { get; set; }
         public PessoaEdicaoPage()
         {
             InitializeComponent();
@@ -28,17 +24,39 @@ namespace Contatos.Pages
 
         private void Inicializar()
         {
-            // Instanciar o Objeto
-            item = new Pessoa()
-            {
-                Nome = "Fulano",
-                Email = "fulano@gmail.com",
-                Telefone = "12345",
-                Observacao = "Obs..."
-            };
+            //item = new Pessoa();
 
-            // Definição de ligar os controles
-            this.BindingContext = item;
+            // Definir a ligação com os controles
+            //this.BindingContext = item;
+
+            // Instanciar a viewmodel
+            //vm = new PessoaViewModelMem();
+
+
+        }
+
+        private async void btnCancelar_Clicked(object sender, EventArgs e)
+        {
+            // Retornar para a página anterior
+            await Navigation.PopAsync();
+        }
+
+        private async void btnSalvar_Clicked(object sender, EventArgs e)
+        {
+            //DisplayAlert("Contatos", "Nome do contato: " + txtNome.Text, "Fechar");
+
+            //Fazer a operação de conversão
+            Pessoa item = (Pessoa)this.BindingContext;
+
+            ViewModel.Salvar(item);
+
+            //var qtdItens = vm.Lista.Count();
+
+            //DisplayAlert("Número de registros", qtdItens.ToString(), "Fechar");
+
+            // Retornar para a página anterior
+
+            await Navigation.PopAsync();
         }
     }
 }
