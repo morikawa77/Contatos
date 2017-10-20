@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.EventoEdicaoPage">
+	<ContentPage.Content>
+        <ScrollView VerticalOptions="StartAndExpand">
+
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="Edição de Eventos" FontSize="24" FontAttributes="Bold" />
+            
+            <Label x:Name="lblNome" Text="Nome do Evento" />
+            <Entry x:Name="txtNome" Placeholder="Digite o nome do evento" Text="{Binding Nome}" />
+
+            <Label x:Name="lblLocal" Text="Local do Evento" />
+            <Entry x:Name="txtLocal" Placeholder="Digite o local do evento" Text="{Binding Local}" />
+
+            <Label x:Name="lblData" Text="Data" />
+            <DatePicker x:Name="dPicData" Date="{Binding Data}"/> 
+
+            <Label x:Name="lblHoraInicio" Text="Hora de início" />
+            <Entry x:Name="txtHoraInicio" Placeholder="Digite a hora de início" Text="{Binding HoraInicio}" />
+
+            <Label x:Name="lblHoraTermino" Text="Hora de termino" />
+            <Entry x:Name="txtHoraTermino" Placeholder="Digite a hora de termino" Text="{Binding HoraTermino}" />
+
+            <Label x:Name="lblAnotacoes" Text="Anotações" />
+            <Editor x:Name="txtAnotacoes" Text="{Binding Anotacoes}" HeightRequest="80" />
+
+            <Picker x:Name="picStatus" Title="Status" SelectedItem="{Binding Status}"/>
+
+            <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" />
+            
+            <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
+        </StackLayout>
+            </ScrollView>
+	</ContentPage.Content>
+</ContentPage>

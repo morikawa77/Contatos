@@ -10,7 +10,7 @@ namespace Contatos
 
             //MainPage = new Contatos.Pages.PessoaListaPage();
 
-            MainPage = new NavigationPage(new Contatos.Pages.PessoaListaPage());
+            MainPage = new NavigationPage(new Contatos.Pages.EventoListaPage());
         }
 
         protected override void OnStart()

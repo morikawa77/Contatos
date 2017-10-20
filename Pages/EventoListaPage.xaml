@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.EventoListaPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="tbiNovo" Order="Default" Text="Novo" Priority="0" Clicked="tbiNovo_Clicked" /> 
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView  VerticalOptions="StartAndExpand">
+        <StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="Lista de Eventos" Margin="15,15,0,0" FontSize="24" FontAttributes="Bold"/>
+                <ListView x:Name="lvEvento" ItemTapped="lvEvento_ItemTapped" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Nome}" Margin="15,10,0,0" />
+                                    <Label Text="{Binding Local}"  Margin="15,0,-3,0"  />
+                                    <Label Text="{Binding Data}" Margin="15,0,0,0"  />
+                                    <Label Text="{Binding HoraInicio}" Margin="15,0,0,10"  />
+                                    <Label Text="{Binding HoraTermino}" Margin="15,0,0,10"  />
+                                    <Label Text="{Binding Anotacoes}" Margin="15,0,0,10"  />
+                                    <Label Text="{Binding Status}" Margin="15,0,0,10"  />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+        </StackLayout>
+            </ScrollView>
+	</ContentPage.Content>
+</ContentPage>
