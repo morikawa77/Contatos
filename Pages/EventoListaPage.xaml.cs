@@ -15,6 +15,8 @@ namespace Contatos.Pages
     public partial class EventoListaPage : ContentPage
     {
         private EventoViewModelMem vm;
+
+
         public EventoListaPage()
         {
             InitializeComponent();
@@ -54,6 +56,8 @@ namespace Contatos.Pages
             // Chamar a página
             await Navigation.PushAsync(pagina);
         }
+
+
 
         private void Inicializar()
         {

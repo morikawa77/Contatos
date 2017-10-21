@@ -4,13 +4,15 @@ namespace Contatos
 {
     public partial class App : Application
     {
+     
+
         public App()
         {
             InitializeComponent();
 
+            // Seta a MainPage para abrir o EventoListaPage XAML
             //MainPage = new Contatos.Pages.PessoaListaPage();
-
-            MainPage = new NavigationPage(new Contatos.Pages.EventoListaPage());
+            MainPage = new NavigationPage(new Contatos.Pages.PessoaListaPage());
         }
 
         protected override void OnStart()

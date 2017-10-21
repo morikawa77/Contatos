@@ -21,6 +21,10 @@ namespace Contatos.Pages
             InitializeComponent();
 
             Inicializar();
+
+            // Seta o título do botão voltar pra esta página FUNCIONA SÓ NO IOS
+            NavigationPage.SetBackButtonTitle(this, "Lista de Contatos");
+
         }
 
         async void tbiNovo_Clicked(object sender, System.EventArgs e)
@@ -57,6 +61,12 @@ namespace Contatos.Pages
 			await Navigation.PushAsync(pagina);
         }
 
+        // método para chamar página de eventos
+        async void tbiEventos(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new Contatos.Pages.EventoListaPage());
+        }
+
         private void Inicializar()
         {
             //Instanciar a viewmodel
@@ -76,6 +86,8 @@ namespace Contatos.Pages
 
             // adicionar item na lista
             vm.Salvar(p1);
+
+
         }
     }
 }

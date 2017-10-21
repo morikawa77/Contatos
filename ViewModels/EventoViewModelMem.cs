@@ -11,6 +11,8 @@ namespace Contatos.ViewModels
     public class EventoViewModelMem
     {
         public ObservableCollection<Evento> Lista { get; set; }
+
+
         public EventoViewModelMem()
         {
             Lista = new ObservableCollection<Evento>();

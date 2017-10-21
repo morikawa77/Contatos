@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.EventoListaPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="tbiNovo" Order="Default" Text="Novo" Priority="0" Clicked="tbiNovo_Clicked" /> 
+
+        <ToolbarItem Name="tbiNovo" Order="Default" Text="Novo Evento" Priority="0" Clicked="tbiNovo_Clicked" /> 
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
