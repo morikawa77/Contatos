@@ -17,7 +17,7 @@
                                 <StackLayout>
                                     <Label Text="{Binding Nome}" Margin="15,10,0,0" />
                                     <Label Text="{Binding Local}"  Margin="15,0,-3,0"  />
-                                    <Label Text="{Binding Data}" Margin="15,0,0,0"  />
+                                    <Label Text="{Binding Data , StringFormat='{0:dd/MM/yyyy}'}" Margin="15,0,0,0"  />
                                     <Label Text="{Binding HoraInicio}" Margin="15,0,0,10"  />
                                     <Label Text="{Binding HoraTermino}" Margin="15,0,0,10"  />
                                     <Label Text="{Binding Anotacoes}" Margin="15,0,0,10"  />

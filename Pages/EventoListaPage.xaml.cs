@@ -72,7 +72,7 @@ namespace Contatos.Pages
             {
                 Nome = "Aniversário Reginaldo",
                 Local = "Minha casa",
-                Data = new DateTime(2018, 08, 25),
+                Data = new DateTime(2018,08,25),
                 HoraInicio = "23:00",
                 HoraTermino = "4:00",
                 Anotacoes = "Comprar bebidas",
