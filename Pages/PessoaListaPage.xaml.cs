@@ -57,8 +57,11 @@ namespace Contatos.Pages
 			// Atribuir a viewmodel
 			pagina.ViewModel = vm;
 
+
 			// Chamar a página
 			await Navigation.PushAsync(pagina);
+
+
         }
 
         // método para chamar página de eventos

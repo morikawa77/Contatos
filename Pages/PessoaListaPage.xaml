@@ -9,14 +9,14 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout HorizontalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#04cea9">
                 <Label Text="Lista de Pessoas" Margin="15,15,0,0" FontSize="24" FontAttributes="Bold"/>
-                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true">
+                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true" BackgroundColor="#04cea9">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout>
-                                    <Label Text="{Binding Nome}" Margin="15,10,0,0" />
+                                    <Label Text="{Binding Nome}" Margin="15,10,0,0"/>
                                     <Label Text="{Binding Email}"  Margin="15,0,-3,0"  />
                                     <Label Text="{Binding Telefone}" Margin="15,0,0,0"  />
                                     <Label Text="{Binding Observacao}" Margin="15,0,0,10"  />
