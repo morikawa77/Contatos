@@ -65,10 +65,12 @@ namespace Contatos.Pages
         }
 
         // método para chamar página de eventos
-        async void tbiEventos(object sender, System.EventArgs e)
+        /* 
+         * async void tbiEventos(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new Contatos.Pages.EventoListaPage());
         }
+        */
 
         private void Inicializar()
         {

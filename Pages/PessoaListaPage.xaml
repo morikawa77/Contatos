@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Contatos.Pages.PessoaListaPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="tbiEventos" Order="Default" Text="Lista de Eventos" Priority="0" Clicked="tbiEventos" /> <!-- Botão para chamar lista de eventos -->
-        <ToolbarItem Name="tbiSeparator" Order="Default" Text="|" Priority="0" IsEnabled="false"/> <!-- Separador -->
+        <!-- <ToolbarItem Name="tbiEventos" Order="Default" Text="Lista de Eventos" Priority="0" Clicked="tbiEventos" /> --> <!-- Botão para chamar lista de eventos --> 
+        <!-- <ToolbarItem Name="tbiSeparator" Order="Default" Text="|" Priority="0" IsEnabled="false"/> --> <!-- Separador -->
         <ToolbarItem Name="tbiNovo" Order="Default" Text="Novo Contato" Priority="0" Clicked="tbiNovo_Clicked" /> 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
