@@ -83,5 +83,6 @@ namespace Contatos.Pages
             // adicionar item na lista
             vm.Salvar(e1);
         }
+
     }
 }

@@ -36,14 +36,14 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: reginaldomorikawa@hotmail.com (WQFS53DCZ6)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.morikawa77.Contatos</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -107,7 +107,6 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
@@ -131,11 +130,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-44%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-86%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-98%402x.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\RetinaHD47-750x1334.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\RetinaHD55-1242x2208.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2x-640x960.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Retina4-640x1136.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\RetinaHD55Landscape-2208x1242.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -151,10 +145,16 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PicturePickerImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icone.png" />
+    <BundleResource Include="Resources\eventos.png" />
+    <BundleResource Include="Resources\pessoas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.18342\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.18342\build\netstandard1.0\Xamarin.Forms.targets')" />

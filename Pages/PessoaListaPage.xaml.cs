@@ -23,7 +23,7 @@ namespace Contatos.Pages
             Inicializar();
 
             // Seta o título do botão voltar pra esta página FUNCIONA SÓ NO IOS
-            NavigationPage.SetBackButtonTitle(this, "Lista de Contatos");
+            // NavigationPage.SetBackButtonTitle(this, "Lista de Contatos");
 
         }
 
@@ -94,5 +94,6 @@ namespace Contatos.Pages
 
 
         }
+
     }
 }

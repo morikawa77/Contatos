@@ -89,6 +89,7 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="IPicturePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />

@@ -9,9 +9,9 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#04cea9">
+            <StackLayout HorizontalOptions="FillAndExpand">
                 <Label Text="Lista de Pessoas" Margin="15,15,0,0" FontSize="24" FontAttributes="Bold"/>
-                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true" BackgroundColor="#04cea9">
+                <ListView x:Name="lvPessoa" ItemTapped="lvPessoa_ItemTapped" HasUnevenRows="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

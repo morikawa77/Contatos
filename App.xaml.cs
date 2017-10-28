@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics.Contracts;
+using System.Threading.Tasks;
 using Contatos.Pages;
 using Xamarin.Forms;
 
@@ -8,7 +10,7 @@ namespace Contatos
     {
         // Atributos Globais
         // const atributo somente de leitura
-        public const string nomeApp = "Contato"; 
+        public const string nomeApp = "Contatos"; 
         // Configuração da página mestre detalhe ativa
         public static MasterDetailPage PaginaMestreDetalhe { get; set; }
 
@@ -47,6 +49,7 @@ namespace Contatos
             //MainPage = new NavigationPage(new Contatos.Pages.PessoaListaPage()) { BarBackgroundColor = Color.FromHex("#b712a4"), BarTextColor = Color.FromHex("#000000"), BackgroundColor = Color.FromHex("#04cea9")};
             MainPage = new MasterPage();
         }
+
 
         protected override void OnStart()
         {
