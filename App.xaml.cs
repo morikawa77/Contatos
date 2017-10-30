@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using Contatos.Data;
 using Contatos.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace Contatos
 {
@@ -13,6 +17,8 @@ namespace Contatos
         public const string nomeApp = "Contatos"; 
         // Configuração da página mestre detalhe ativa
         public static MasterDetailPage PaginaMestreDetalhe { get; set; }
+
+        static ContatosDB database;
 
         //Métodos de navegação da aplicação
         public static async Task NavegacaoPagina(Page pagina)
@@ -48,6 +54,18 @@ namespace Contatos
             //MainPage = new Contatos.Pages.PessoaListaPage();
             //MainPage = new NavigationPage(new Contatos.Pages.PessoaListaPage()) { BarBackgroundColor = Color.FromHex("#b712a4"), BarTextColor = Color.FromHex("#000000"), BackgroundColor = Color.FromHex("#04cea9")};
             MainPage = new MasterPage();
+        }
+
+        public static ContatosDB Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ContatosDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("contatos.db3"));
+                }
+                return database;
+            }
         }
 
 

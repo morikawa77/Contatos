@@ -40,9 +40,21 @@ namespace Contatos.Pages
             //Fazer a operação de conversão
             Evento item = (Evento)this.BindingContext;
 
-            ViewModel.Salvar(item);
+            // ViewModel.Salvar(item);
+            await App.Database.SaveEventoAsync(item);
 
             await Navigation.PopAsync();
+        }
+
+        private async void btnApagar_Clicked(object sender, EventArgs e)
+        {
+            //Fazer a operação de conversão
+            Evento item = (Evento)this.BindingContext;
+
+            await App.Database.DeleteEventoAsync(item);
+
+            await Navigation.PopAsync();
+
         }
 
     }

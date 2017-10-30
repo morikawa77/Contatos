@@ -14,12 +14,12 @@ namespace Contatos.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PessoaEdicaoPage : ContentPage
     {
-        public PessoaViewModelMem ViewModel { get; set; }
+        //public PessoaViewModelMem ViewModel { get; set; }
         public PessoaEdicaoPage()
         {
             InitializeComponent();
 
-            Inicializar();
+            //Inicializar();
         }
 
         private void Inicializar()
@@ -48,7 +48,8 @@ namespace Contatos.Pages
             //Fazer a operação de conversão
             Pessoa item = (Pessoa)this.BindingContext;
 
-            ViewModel.Salvar(item);
+            // ViewModel.Salvar(item);
+            await App.Database.SavePessoaAsync(item);
 
             //var qtdItens = vm.Lista.Count();
 
@@ -57,6 +58,17 @@ namespace Contatos.Pages
             // Retornar para a página anterior
 
             await Navigation.PopAsync();
+        }
+
+        private async void btnApagar_Clicked(object sender, EventArgs e)
+        {
+            //Fazer a operação de conversão
+            Pessoa item = (Pessoa)this.BindingContext;
+
+            await App.Database.DeletePessoaAsync(item);
+
+            await Navigation.PopAsync();
+
         }
     }
 }

@@ -20,7 +20,8 @@ namespace Contatos.Pages
         public EventoListaPage()
         {
             InitializeComponent();
-            Inicializar();
+            //Inicializar();
+            OnAppearing();
         }
 
         async void tbiNovo_Clicked(object sender, System.EventArgs e)
@@ -34,7 +35,7 @@ namespace Contatos.Pages
             // Definir o binding
             pagina.BindingContext = evento;
             // Atribuir a viewmodel
-            pagina.ViewModel = vm;
+            // pagina.ViewModel = vm;
 
             // Chamar a página
             await Navigation.PushAsync(pagina);
@@ -51,7 +52,7 @@ namespace Contatos.Pages
             // Definir o binding
             pagina.BindingContext = evento;
             // Atribuir a viewmodel
-            pagina.ViewModel = vm;
+            // pagina.ViewModel = vm;
 
             // Chamar a página
             await Navigation.PushAsync(pagina);
@@ -59,7 +60,7 @@ namespace Contatos.Pages
 
 
 
-        private void Inicializar()
+        /* private void Inicializar()
         {
             //Instanciar a viewmodel
             vm = new EventoViewModelMem();
@@ -82,6 +83,12 @@ namespace Contatos.Pages
 
             // adicionar item na lista
             vm.Salvar(e1);
+        } */
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            lvEvento.ItemsSource = await App.Database.GetEventosAsync();
         }
 
     }

@@ -29,6 +29,8 @@
             <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" />
             
             <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
+
+            <Button x:Name="btnApagar" Text="Apagar" Clicked="btnApagar_Clicked" />
         </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

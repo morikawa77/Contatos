@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using SQLite;
 
 namespace Contatos.Models
 {
+    [Table("Evento")]
     public class Evento : INotifyPropertyChanged
     {
         public Evento()
@@ -23,6 +25,7 @@ namespace Contatos.Models
 
 
         //Declarar as propriedades
+        [PrimaryKey, AutoIncrement]
         public int Id
         {
             get
@@ -36,6 +39,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(250), NotNull]
         public string Nome
         {
             get
@@ -49,6 +54,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(250), NotNull]
         public string Local
         {
             get
@@ -62,6 +69,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [NotNull]
         public DateTime Data
         {
             get
@@ -75,6 +84,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(5), NotNull]
         public string HoraInicio
         {
             get
@@ -88,6 +99,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(5), NotNull]
         public string HoraTermino
         {
             get
@@ -101,6 +114,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(600), NotNull]
         public string Anotacoes
         {
             get
@@ -114,6 +129,8 @@ namespace Contatos.Models
                 OnPropertyChanged();
             }
         }
+
+        [MaxLength(20), NotNull]
         public string Status
         {
             get

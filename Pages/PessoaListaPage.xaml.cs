@@ -13,14 +13,16 @@ namespace Contatos.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PessoaListaPage : ContentPage
     {
-        private PessoaViewModelMem vm;
+        // private PessoaViewModelMem vm;
 
 
         public PessoaListaPage()
         {
             InitializeComponent();
 
-            Inicializar();
+            // InicializarAsync();
+
+            OnAppearing();
 
             // Seta o título do botão voltar pra esta página FUNCIONA SÓ NO IOS
             // NavigationPage.SetBackButtonTitle(this, "Lista de Contatos");
@@ -38,7 +40,7 @@ namespace Contatos.Pages
             // Definir o binding
             pagina.BindingContext = pessoa;
             // Atribuir a viewmodel
-            pagina.ViewModel = vm;
+            // pagina.ViewModel = vm;
 
             // Chamar a página
             await Navigation.PushAsync(pagina);
@@ -55,7 +57,7 @@ namespace Contatos.Pages
 			// Definir o binding
 			pagina.BindingContext = pessoa;
 			// Atribuir a viewmodel
-			pagina.ViewModel = vm;
+			// pagina.ViewModel = vm;
 
 
 			// Chamar a página
@@ -72,13 +74,17 @@ namespace Contatos.Pages
         }
         */
 
-        private void Inicializar()
+        /* private async void InicializarAsync()
         {
             //Instanciar a viewmodel
-            vm = new PessoaViewModelMem();
+            // vm = new PessoaViewModelMem();
 
             // Definir a fonte de dados da lista
-            lvPessoa.ItemsSource = vm.Lista;
+            // lvPessoa.ItemsSource = vm.Lista;
+
+
+            // Popula a lista
+            lvPessoa.ItemsSource = await App.Database.GetPessoasAsync();
 
             // Criar registros de teste
             var p1 = new Pessoa()
@@ -86,13 +92,17 @@ namespace Contatos.Pages
                 Nome = "Reginaldo Morikawa",
                 Email = "morikawa77@gmail.com",
                 Telefone = "+5517981462389"
-                   
+
             };
 
             // adicionar item na lista
             vm.Salvar(p1);
+            
+        } */
 
-
+        protected override async void OnAppearing(){
+            base.OnAppearing();
+            lvPessoa.ItemsSource = await App.Database.GetPessoasAsync();
         }
 
     }
