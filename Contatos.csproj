@@ -90,7 +90,6 @@
     </Compile>
     <Compile Include="Models\Menu.cs" />
     <Compile Include="IPicturePicker.cs" />
-    <Compile Include="Models\Usuario.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="Data\ContatosDB.cs" />
   </ItemGroup>
@@ -127,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="contatos.db3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.4.0.18342\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

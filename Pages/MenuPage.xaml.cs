@@ -9,7 +9,7 @@ namespace Contatos.Pages
     public partial class MenuPage : ContentPage
     {
         List<Menu> menuItens;
-
+        public string imagem { get; set; }
 
         public MenuPage()
         {
@@ -19,7 +19,9 @@ namespace Contatos.Pages
 
         private void gerarMenu()
         {
+            
             imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
+
             lblNome.Text = "Reginaldo Morikawa";
             lblEmail.Text = "morikawa77@gmail.com";
             lblNome.FontSize = 12;

@@ -14,7 +14,6 @@ namespace Contatos.Data
             database = new SQLiteAsyncConnection(dbPath);
             database.CreateTableAsync<Pessoa>().Wait();
             database.CreateTableAsync<Evento>().Wait();
-            database.CreateTableAsync<Usuario>().Wait();
         }
 
         // listar todos os itens

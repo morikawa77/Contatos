@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Contatos.Pages.PessoaEdicaoPage">
     <ContentPage.Content>
-        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-            <Label Text="Edição de Pessoas" FontSize="24" FontAttributes="Bold" />
-            
-            <Label x:Name="lblNome" Text="Nome" />
-            <Entry x:Name="txtNome" Placeholder="Digite o nome" Text="{Binding Nome}" />
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+                <Label Text="Edição de Pessoas" FontSize="24" FontAttributes="Bold" />
+                
+                <Label x:Name="lblNome" Text="Nome" />
+                <Entry x:Name="txtNome" Placeholder="Digite o nome" Text="{Binding Nome}" />
 
-            <Label x:Name="lblEmail" Text="E-mail" />
-            <Entry x:Name="txtEmail" Placeholder="Digite o e-mail" Text="{Binding Email}" />
+                <Label x:Name="lblEmail" Text="E-mail" />
+                <Entry x:Name="txtEmail" Placeholder="Digite o e-mail" Text="{Binding Email}" />
 
-            <Label x:Name="lblTelefone" Text="Telefone" />
-            <Entry x:Name="txtTelefone" Placeholder="Digite o telefone" Text="{Binding Telefone}" />
+                <Label x:Name="lblTelefone" Text="Telefone" />
+                <Entry x:Name="txtTelefone" Placeholder="Digite o telefone" Text="{Binding Telefone}" />
 
-            <Label x:Name="lblObservacao" Text="Observação" />
-            <Editor x:Name="txtObservacao" Text="{Binding Observacao}" HeightRequest="80" />
+                <Label x:Name="lblObservacao" Text="Observação" />
+                <Editor x:Name="txtObservacao" Text="{Binding Observacao}" HeightRequest="80" />
 
-            <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" />
-            
-            <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
+                <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" />
+                
+                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
 
-            <Button x:Name="btnApagar" Text="Apagar" Clicked="btnApagar_Clicked" />
-        </StackLayout>
+                <Button x:Name="btnApagar" Text="Apagar" Clicked="btnApagar_Clicked" Margin="0,0,0,20"/>
+
+            </StackLayout>
+        </ScrollView>    
     </ContentPage.Content>
 </ContentPage>

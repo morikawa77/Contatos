@@ -14,7 +14,7 @@ namespace Contatos.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventoListaPage : ContentPage
     {
-        private EventoViewModelMem vm;
+        //private EventoViewModelMem vm;
 
 
         public EventoListaPage()

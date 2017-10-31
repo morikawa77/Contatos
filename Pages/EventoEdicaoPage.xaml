@@ -30,7 +30,7 @@
             
             <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
 
-            <Button x:Name="btnApagar" Text="Apagar" Clicked="btnApagar_Clicked" />
+            <Button x:Name="btnApagar" Text="Apagar" Clicked="btnApagar_Clicked"  Margin="0,0,0,20"/>
         </StackLayout>
             </ScrollView>
 	</ContentPage.Content>
