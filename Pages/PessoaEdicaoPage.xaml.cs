@@ -62,17 +62,17 @@ namespace Contatos.Pages
                     return (false);
             }
 
-            if(item.Nome == null){
+            if(String.IsNullOrWhiteSpace(item.Nome)){
                 await DisplayAlert("Erro ao salvar", "Digite o nome", "Fechar");
-            } else if (item.Email == null){
+            } else if (String.IsNullOrWhiteSpace(item.Email)){
                 await DisplayAlert("Erro ao salvar", "Digite o e-mail", "Fechar");
             } else if (!isValidEmail(item.Email)) {
                 await DisplayAlert("Erro ao salvar", "E-mail inválido", "Fechar");
-            } else if (item.Telefone == null){
+            } else if (String.IsNullOrWhiteSpace(item.Telefone)){
                 await DisplayAlert("Erro ao salvar", "Digite o telefone", "Fechar");
-            } else if (item.Observacao == null) {
+            } else if (String.IsNullOrWhiteSpace(item.Observacao)) {
                 await DisplayAlert("Erro ao salvar", "Digite a observação", "Fechar");
-            } else if (item.Nome != null && item.Email != null && item.Telefone != null && item.Observacao != null){
+            } else if (!(String.IsNullOrWhiteSpace(item.Nome)) && !(String.IsNullOrWhiteSpace(item.Email)) && (isValidEmail(item.Email)) && !(String.IsNullOrWhiteSpace(item.Telefone)) && !(String.IsNullOrWhiteSpace(item.Observacao))){
                 // salva no banco
                 await App.Database.SavePessoaAsync(item);
                 // Retornar para a página anterior

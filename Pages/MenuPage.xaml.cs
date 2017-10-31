@@ -55,9 +55,15 @@ namespace Contatos.Pages
 
         async void lvMenu_ItemTappedAsync(object sender, ItemTappedEventArgs e)
         {
+            // Remove a seleção da lista pra não ficar aquela cor ridícula marcada
+            // Se acabou de remover não fazer nada
+            if (e.Item == null) return;
+            // Remove a seleção
+            ((ListView)sender).SelectedItem = null;
 
             var item = (Menu)e.Item;
             await App.NavegacaoPagina((Page)Activator.CreateInstance(item.Paginas));
+
         }
 
         async void homeMenuTapped(object sender, EventArgs e)

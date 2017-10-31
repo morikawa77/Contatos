@@ -11,10 +11,19 @@
                 <Entry x:Name="txtNome" Placeholder="Digite o nome" Text="{Binding Nome}" />
 
                 <Label x:Name="lblEmail" Text="E-mail" />
-                <Entry x:Name="txtEmail" Placeholder="Digite o e-mail" Text="{Binding Email}" />
+                <Entry x:Name="txtEmail" Placeholder="Digite o e-mail" Text="{Binding Email}" Keyboard="Email">
+                    <!-- Seta o teclado para começar com letra minúscula -->
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                          <x:Arguments>
+                            <KeyboardFlags>None</KeyboardFlags>
+                          </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
 
                 <Label x:Name="lblTelefone" Text="Telefone" />
-                <Entry x:Name="txtTelefone" Placeholder="Digite o telefone" Text="{Binding Telefone}" />
+                <Entry x:Name="txtTelefone" Placeholder="Digite o telefone" Text="{Binding Telefone}" Keyboard="Telephone"/>
 
                 <Label x:Name="lblObservacao" Text="Observação" />
                 <Editor x:Name="txtObservacao" Text="{Binding Observacao}" HeightRequest="80" />

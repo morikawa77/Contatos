@@ -15,6 +15,7 @@ namespace Contatos.Pages
         {
             InitializeComponent();
             ListarStatus();
+            dataMinimaDataAtual();
         }
 
         private void ListarStatus()
@@ -41,22 +42,24 @@ namespace Contatos.Pages
             Evento item = (Evento)this.BindingContext;
 
             // ViewModel.Salvar(item);
-
-            if (item.Nome == null){
+            // Tentei com (item.Nome == null) e com (item.Nome == null && item.Nome == "") mas ainda nao verifica se só tem espaços
+            if (String.IsNullOrWhiteSpace(item.Nome)){
                 await DisplayAlert("Erro ao salvar", "Digite o nome", "Fechar");
-            } else if (item.Local == null) {
+            } else if (String.IsNullOrWhiteSpace(item.Local)) {
                 await DisplayAlert("Erro ao salvar", "Digite o local", "Fechar");
             } else if (item.Data == null) {
                 await DisplayAlert("Erro ao salvar", "Escolha a data", "Fechar");
-            } else if (item.HoraInicio == null) {
+            } else if(item.Data.Date < DateTime.Now.Date) { // .Date compara só a data sem o horário
+                await DisplayAlert("Erro ao salvar", "Data escolhida é anterior a data atual", "Fechar");  
+            } else if (String.IsNullOrWhiteSpace(item.HoraInicio)) {
                 await DisplayAlert("Erro ao salvar", "Digite a hora de início", "Fechar");
-            } else if (item.HoraTermino == null) {
+            } else if (String.IsNullOrWhiteSpace(item.HoraTermino)) {
                 await DisplayAlert("Erro ao salvar", "Digite a hora de termino", "Fechar");
-            } else if (item.Anotacoes == null) {
+            } else if (String.IsNullOrWhiteSpace(item.Anotacoes)) {
                 await DisplayAlert("Erro ao salvar", "Digite a anotação", "Fechar");
-            } else if (item.Status == null) {
+            } else if (String.IsNullOrWhiteSpace(item.Status)) {
                 await DisplayAlert("Erro ao salvar", "Escolha o status", "Fechar");
-            } else if (item.Nome != null && item.Local != null && item.Data != null && item.HoraInicio != null && item.HoraTermino != null && item.Anotacoes != null && item.Status != null){
+            } else if (!(String.IsNullOrWhiteSpace(item.Nome)) && !(String.IsNullOrWhiteSpace(item.Local)) && item.Data != null && item.Data.Date > DateTime.Now.Date && !(String.IsNullOrWhiteSpace(item.HoraInicio)) && !(String.IsNullOrWhiteSpace(item.HoraTermino)) && !(String.IsNullOrWhiteSpace(item.Anotacoes)) && !(String.IsNullOrWhiteSpace(item.Status))){
                 await App.Database.SaveEventoAsync(item);
                 await Navigation.PopAsync();
             }
@@ -72,6 +75,10 @@ namespace Contatos.Pages
 
             await Navigation.PopAsync();
 
+        }
+
+        private void dataMinimaDataAtual (){
+            dPicData.MinimumDate = DateTime.Now;
         }
 
     }

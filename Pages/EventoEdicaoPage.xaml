@@ -13,7 +13,9 @@
             <Entry x:Name="txtLocal" Placeholder="Digite o local do evento" Text="{Binding Local}" />
 
             <Label x:Name="lblData" Text="Data" />
-            <DatePicker x:Name="dPicData" Date="{Binding Data}"/> 
+            <DatePicker x:Name="dPicData" Date="{Binding Data}"> 
+                <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+            </DatePicker>
 
             <Label x:Name="lblHoraInicio" Text="Hora de início" />
             <Entry x:Name="txtHoraInicio" Placeholder="Digite a hora de início" Text="{Binding HoraInicio}" />
