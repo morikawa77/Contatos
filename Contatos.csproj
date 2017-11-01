@@ -54,6 +54,10 @@
     <EmbeddedResource Include="Resources\Imagens\foto.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UsuarioEdicaoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -70,9 +74,7 @@
     <Compile Include="Pages\PessoaListaPage.xaml.cs">
       <DependentUpon>PessoaListaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\PessoaViewModelMem.cs" />
     <Compile Include="Models\Evento.cs" />
-    <Compile Include="ViewModels\EventoViewModelMem.cs" />
     <Compile Include="Pages\EventoEdicaoPage.xaml.cs">
       <DependentUpon>EventoEdicaoPage.xaml</DependentUpon>
     </Compile>
@@ -92,10 +94,13 @@
     <Compile Include="IPicturePicker.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="Data\ContatosDB.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Pages\UsuarioEdicaoPage.xaml.cs">
+      <DependentUpon>UsuarioEdicaoPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Imagens\" />
     <Folder Include="Resources\Icones\" />

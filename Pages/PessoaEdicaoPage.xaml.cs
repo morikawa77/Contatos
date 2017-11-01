@@ -1,5 +1,4 @@
 ﻿using Contatos.Models;
-using Contatos.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

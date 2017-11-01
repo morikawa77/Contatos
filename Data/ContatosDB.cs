@@ -14,6 +14,7 @@ namespace Contatos.Data
             database = new SQLiteAsyncConnection(dbPath);
             database.CreateTableAsync<Pessoa>().Wait();
             database.CreateTableAsync<Evento>().Wait();
+            database.CreateTableAsync<Usuario>().Wait();
         }
 
         // listar todos os itens
@@ -25,6 +26,11 @@ namespace Contatos.Data
         public Task<List<Evento>> GetEventosAsync()
         {
             return database.Table<Evento>().ToListAsync();
+        }
+
+        public Task<Usuario> GetUsuariosAsync()
+        {
+            return database.Table<Usuario>().Where(i => i.Id == 1).FirstOrDefaultAsync();
         }
 
 
@@ -58,6 +64,18 @@ namespace Contatos.Data
         }
 
         public Task<int> SaveEventoAsync(Evento item)
+        {
+            if (item.Id != 0)
+            {
+                return database.UpdateAsync(item);
+            }
+            else
+            {
+                return database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> SaveUsuarioAsync(Usuario item)
         {
             if (item.Id != 0)
             {

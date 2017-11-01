@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.UsuarioEdicaoPage">
+	<ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Entry x:Name="lbl_nome" Text="{Binding Nome}"/>
+            <Entry x:Name="lbl_email" Text="{Binding Email}"/>
+            <Button x:Name="btn_salvar" Text="Salvar" Clicked="btnSalvar_Clicked"/>
+            <Button x:Name="btn_cancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

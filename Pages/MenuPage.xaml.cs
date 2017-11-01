@@ -15,18 +15,11 @@ namespace Contatos.Pages
         {
             InitializeComponent();
             gerarMenu();
+            geraUsuario();
         }
 
         private void gerarMenu()
         {
-            
-            imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
-
-            lblNome.Text = "Reginaldo Morikawa";
-            lblEmail.Text = "morikawa77@gmail.com";
-            lblNome.FontSize = 12;
-            lblEmail.FontSize = 12;
-            lblNome.FontAttributes = FontAttributes.Bold;
 
             var m1 = new Menu()
             {
@@ -52,6 +45,36 @@ namespace Contatos.Pages
 
         }
 
+        async void geraUsuario(){
+            var usuario = await App.Database.GetUsuariosAsync();
+
+
+            if (usuario.Imagem == null)
+            {
+                imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
+            }
+            else
+            {
+                imgFoto.Source = usuario.Imagem;
+            }
+
+            if (usuario.Nome == null){
+                lblNome.Text = "Reginaldo Morikawa";
+            } else {
+                lblNome.Text = usuario.Nome;
+            }
+
+            if (usuario.Email == null){
+                lblEmail.Text = "morikawa77@gmail.com";
+            } else {
+                lblEmail.Text = usuario.Email;
+            }
+
+            lblNome.FontSize = 12;
+            lblEmail.FontSize = 12;
+            lblNome.FontAttributes = FontAttributes.Bold;
+        }
+
 
         async void lvMenu_ItemTappedAsync(object sender, ItemTappedEventArgs e)
         {
@@ -75,7 +98,17 @@ namespace Contatos.Pages
         {
             Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
             imgFoto.Source = ImageSource.FromStream(() => stream);
+            string image = imgFoto.Source.ToString();
+            Usuario item = (Usuario)this.BindingContext;
+            item.Imagem = image;
+            item.Id = 1;
+            await App.Database.SaveUsuarioAsync(item);
         }
         // IPicturePicker Interface Multiplataform from https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/dependency-service/photo-picker/
+
+        async void usuarioTapped(object sender, EventArgs e)
+        {
+            await App.NavegacaoPagina((Page)Activator.CreateInstance(typeof(UsuarioEdicaoPage)));
+        }
     }
 }

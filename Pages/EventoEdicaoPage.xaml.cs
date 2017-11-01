@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Contatos.Models;
-using Contatos.ViewModels;
 using Xamarin.Forms;
 
 namespace Contatos.Pages

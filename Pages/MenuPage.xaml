@@ -32,6 +32,9 @@
                 Orientation="Vertical"
                 Spacing="0"
                 Margin="0,75,0,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="usuarioTapped"/>
+                </StackLayout.GestureRecognizers>
                 <Label x:Name="lblNome" HorizontalOptions="FillAndExpand" Margin="5" />
                 <Label x:Name="lblEmail" HorizontalOptions="FillAndExpand" Margin="5" />           
             </StackLayout>
