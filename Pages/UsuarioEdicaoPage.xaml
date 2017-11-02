@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.Pages.UsuarioEdicaoPage">
 	<ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
-            <Entry x:Name="lbl_nome" Text="{Binding Nome}"/>
-            <Entry x:Name="lbl_email" Text="{Binding Email}"/>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label Text="Editar usuário" Margin="15,60,15,30" FontSize="24" FontAttributes="Bold" />
+            <Label Text="Nome do usuário:" Margin="15,0,15,0"/>
+            <Entry x:Name="lbl_nome" Text="{Binding Nome}"  Margin="15,0,15,0"/>
+            <Label Text="E-mail do usuário:"  Margin="15,0,15,0"/>
+            <Entry x:Name="lbl_email" Text="{Binding Email}"  Margin="15,0,15,0"/>
             <Button x:Name="btn_salvar" Text="Salvar" Clicked="btnSalvar_Clicked"/>
-            <Button x:Name="btn_cancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" />
+            <Button x:Name="btn_cancelar" Text="Cancelar" Clicked="btnCancelar_Clicked"  Margin="0,0,0,20"/>
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

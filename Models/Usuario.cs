@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
+using Xamarin.Forms;
 
 namespace Contatos.Models
 {
@@ -67,7 +68,7 @@ namespace Contatos.Models
             }
         }
 
-        [MaxLength(250), NotNull]
+        [MaxLength(1000), NotNull]
         public string Imagem
         {
             get
@@ -89,5 +90,6 @@ namespace Contatos.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

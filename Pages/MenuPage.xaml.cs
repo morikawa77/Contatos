@@ -48,25 +48,25 @@ namespace Contatos.Pages
         async void geraUsuario(){
             var usuario = await App.Database.GetUsuariosAsync();
 
-
-            if (usuario.Imagem == null)
+            if (usuario == null)
             {
                 imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
-            }
-            else
+                lblNome.Text = "Reginaldo Morikawa";
+                lblEmail.Text = "morikawa77@gmail.com";
+
+                Usuario item = new Usuario()
+                {
+                    //Id = 1,
+                    Imagem = imgFoto.Source.GetValue(FileImageSource.FileProperty).ToString(),
+                    Nome = lblNome.Text,
+                    Email = lblEmail.Text
+                };
+                await App.Database.SaveUsuarioAsync(item);
+
+            } else
             {
                 imgFoto.Source = usuario.Imagem;
-            }
-
-            if (usuario.Nome == null){
-                lblNome.Text = "Reginaldo Morikawa";
-            } else {
                 lblNome.Text = usuario.Nome;
-            }
-
-            if (usuario.Email == null){
-                lblEmail.Text = "morikawa77@gmail.com";
-            } else {
                 lblEmail.Text = usuario.Email;
             }
 
@@ -98,10 +98,11 @@ namespace Contatos.Pages
         {
             Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
             imgFoto.Source = ImageSource.FromStream(() => stream);
-            string image = imgFoto.Source.ToString();
+
+            var image = imgFoto.Source.GetValue(StreamImageSource.StreamProperty).ToString();
             Usuario item = (Usuario)this.BindingContext;
             item.Imagem = image;
-            item.Id = 1;
+            //item.Id = 1;
             await App.Database.SaveUsuarioAsync(item);
         }
         // IPicturePicker Interface Multiplataform from https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/dependency-service/photo-picker/
@@ -109,6 +110,7 @@ namespace Contatos.Pages
         async void usuarioTapped(object sender, EventArgs e)
         {
             await App.NavegacaoPagina((Page)Activator.CreateInstance(typeof(UsuarioEdicaoPage)));
+
         }
     }
 }

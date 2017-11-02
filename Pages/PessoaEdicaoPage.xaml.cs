@@ -22,6 +22,7 @@ namespace Contatos.Pages
             //Inicializar();
         }
 
+        /*
         private void Inicializar()
         {
             //item = new Pessoa();
@@ -34,6 +35,7 @@ namespace Contatos.Pages
 
 
         }
+        */
 
         private async void btnCancelar_Clicked(object sender, EventArgs e)
         {
