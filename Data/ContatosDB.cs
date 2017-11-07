@@ -50,7 +50,7 @@ namespace Contatos.Data
         }
         */
 
-        // Update
+        // Create / Update
         public Task<int> SavePessoaAsync(Pessoa item)
         {
             if (item.Id != 0)

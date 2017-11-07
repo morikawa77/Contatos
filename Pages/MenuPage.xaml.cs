@@ -15,7 +15,8 @@ namespace Contatos.Pages
         {
             InitializeComponent();
             gerarMenu();
-            geraUsuario();
+            // geraUsuario();
+            geraUsuarioSemBanco();
         }
 
         private void gerarMenu()
@@ -45,10 +46,18 @@ namespace Contatos.Pages
 
         }
 
+        /* NÃO TA FUNCIONANDO SAPORRA
         async void geraUsuario(){
             var usuario = await App.Database.GetUsuariosAsync();
 
-            if (usuario == null)
+            if (usuario != null)
+            {
+                imgFoto.Source = usuario.Imagem;
+                lblNome.Text = usuario.Nome;
+                lblEmail.Text = usuario.Email;
+
+
+            } else
             {
                 imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
                 lblNome.Text = "Reginaldo Morikawa";
@@ -56,25 +65,29 @@ namespace Contatos.Pages
 
                 Usuario item = new Usuario()
                 {
-                    //Id = 1,
-                    Imagem = imgFoto.Source.GetValue(FileImageSource.FileProperty).ToString(),
+                    Imagem = (string)imgFoto.Source.GetValue(FileImageSource.FileProperty),
+                    //Imagem = imgFoto.Source.ToString(),
                     Nome = lblNome.Text,
                     Email = lblEmail.Text
                 };
                 await App.Database.SaveUsuarioAsync(item);
-
-            } else
-            {
-                imgFoto.Source = usuario.Imagem;
-                lblNome.Text = usuario.Nome;
-                lblEmail.Text = usuario.Email;
             }
 
             lblNome.FontSize = 12;
             lblEmail.FontSize = 12;
             lblNome.FontAttributes = FontAttributes.Bold;
         }
+        */
 
+        void geraUsuarioSemBanco(){
+            imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
+            lblNome.Text = "Reginaldo Morikawa";
+            lblEmail.Text = "morikawa77@gmail.com";
+
+            lblNome.FontSize = 12;
+            lblEmail.FontSize = 12;
+            lblNome.FontAttributes = FontAttributes.Bold;
+        }
 
         async void lvMenu_ItemTappedAsync(object sender, ItemTappedEventArgs e)
         {
@@ -99,11 +112,13 @@ namespace Contatos.Pages
             Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
             imgFoto.Source = ImageSource.FromStream(() => stream);
 
+            /* Salvar uri da img no banco NÃO TA FUNCIONANDO :/
             var image = imgFoto.Source.GetValue(StreamImageSource.StreamProperty).ToString();
             Usuario item = (Usuario)this.BindingContext;
             item.Imagem = image;
             //item.Id = 1;
             await App.Database.SaveUsuarioAsync(item);
+            */
         }
         // IPicturePicker Interface Multiplataform from https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/dependency-service/photo-picker/
 
