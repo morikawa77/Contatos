@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Contatos.Models;
 using Xamarin.Forms;
@@ -14,10 +13,10 @@ namespace Contatos.Pages
             getUsuario();
         }
 
-
+        Usuario usuario = new Usuario();
 
         async void getUsuario(){
-            Usuario usuario = await App.Database.GetUsuariosAsync();
+            usuario = await App.Database.GetUsuariosAsync();
             lbl_nome.Text = usuario.Nome;
             lbl_email.Text = usuario.Email;
         }
@@ -31,7 +30,7 @@ namespace Contatos.Pages
         async void btnSalvar_Clicked(object sender, EventArgs e)
         {
             //Fazer a operação de conversão
-            Usuario item = (Usuario)this.BindingContext;
+            //usuario = (Usuario)this.BindingContext;
 
             // RegExp to validate email
             bool isValidEmail(string inputEmail)
@@ -46,18 +45,29 @@ namespace Contatos.Pages
                     return (false);
             }
 
-            if (String.IsNullOrWhiteSpace(item.Nome)){
+            if (String.IsNullOrWhiteSpace(lbl_nome.Text)){
                 await DisplayAlert("Erro ao salvar", "Digite o nome", "Fechar");
-            } else if (String.IsNullOrWhiteSpace(item.Email)) {
+            } else if (String.IsNullOrWhiteSpace(lbl_email.Text)) {
                 await DisplayAlert("Erro ao salvar", "Digite o email", "Fechar");
-            } else if (!isValidEmail(item.Email)){
+            } else if (!isValidEmail(lbl_email.Text)){
                 await DisplayAlert("Erro ao salvar", "E-mail inválido", "Fechar");
             } 
-            else if (!(String.IsNullOrWhiteSpace(item.Nome)) && !(String.IsNullOrWhiteSpace(item.Email)))
+            else if (!(String.IsNullOrWhiteSpace(lbl_nome.Text)) && !(String.IsNullOrWhiteSpace(lbl_email.Text)))
             {
-                // No bindable ele já ta pegando o objeto do item que contem o Id
-                // item.Id = 1;
+                Usuario item = new Usuario()
+                {
+                    Id = usuario.Id,
+                    Imagem = usuario.Imagem,
+                    Nome = lbl_nome.Text,
+                    Email = lbl_email.Text
+                };
+                // salva usuario no banco
                 await App.Database.SaveUsuarioAsync(item);
+                // atualiza campos de texto na MenuPage
+                // await ???
+                // avisa o usuario que deu certo
+                await DisplayAlert("Sucesso", "Usuário atualizado", "Fechar");
+                // volta para página anterior
                 await Navigation.PopAsync();
             }
         }

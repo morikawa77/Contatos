@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Contatos.UserControls.FormularioUC">
+	<ContentView.Content>
+         <Grid Style="{DynamicResource backStyle}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            
+            <ContentView x:Name="cvCabecalho"
+                         Grid.Row="0" Grid.Column="0"
+                         VerticalOptions="Start"
+                        >
+                <Label x:Name="lblTitulo"
+                       VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"/>
+            </ContentView>
+            <ContentView x:Name="cvCabecalhoItens"
+                         Grid.Row="0" Grid.Column="1" 
+                         VerticalOptions="Start"
+                         HorizontalOptions="End"
+                         >
+                
+            </ContentView>
+
+            <ContentView x:Name="cvConteudo"
+                         Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Style="{DynamicResource formularioStyle}">                
+            </ContentView>
+
+            <ContentView x:Name="cvRodape"
+                         Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                         VerticalOptions="End"
+                         >                
+            </ContentView>
+
+        </Grid>
+	</ContentView.Content>
+</ContentView>

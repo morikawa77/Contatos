@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using Contatos.Models;
 using Xamarin.Forms;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System.Threading.Tasks;
 
 namespace Contatos.Pages
 {
@@ -10,13 +13,13 @@ namespace Contatos.Pages
     {
         List<Menu> menuItens;
         public string imagem { get; set; }
+        MediaFile arquivoMidia;
 
         public MenuPage()
         {
             InitializeComponent();
             gerarMenu();
-            // geraUsuario();
-            geraUsuarioSemBanco();
+            geraUsuario();
         }
 
         private void gerarMenu()
@@ -46,43 +49,41 @@ namespace Contatos.Pages
 
         }
 
-        /* NÃO TA FUNCIONANDO SAPORRA
-        async void geraUsuario(){
+       
+        public async void geraUsuario()
+        {
             var usuario = await App.Database.GetUsuariosAsync();
 
             if (usuario != null)
             {
-                imgFoto.Source = usuario.Imagem;
+                if (usuario.Imagem == "foto.png")
+                { // Se a foto padrao tiver salva no banco
+                    imgFoto.Source = usuario.Imagem;
+                    imgFoto.Aspect = Aspect.AspectFill;
+                }
+                else
+                { // Se a imagem foi alterada por uma da câmera
+                    imgFoto.Source = ImageSource.FromFile(usuario.Imagem);
+                    imgFoto.Aspect = Aspect.AspectFill;
+                }
                 lblNome.Text = usuario.Nome;
                 lblEmail.Text = usuario.Email;
 
-
-            } else
+            }
+            else
             {
-                imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
+                imgFoto.Source = "foto.png";
                 lblNome.Text = "Reginaldo Morikawa";
                 lblEmail.Text = "morikawa77@gmail.com";
 
                 Usuario item = new Usuario()
                 {
-                    Imagem = (string)imgFoto.Source.GetValue(FileImageSource.FileProperty),
-                    //Imagem = imgFoto.Source.ToString(),
+                    Imagem = "foto.png",
                     Nome = lblNome.Text,
                     Email = lblEmail.Text
                 };
                 await App.Database.SaveUsuarioAsync(item);
             }
-
-            lblNome.FontSize = 12;
-            lblEmail.FontSize = 12;
-            lblNome.FontAttributes = FontAttributes.Bold;
-        }
-        */
-
-        void geraUsuarioSemBanco(){
-            imgFoto.Source = ImageSource.FromResource("Contatos.Resources.Imagens.foto.png");
-            lblNome.Text = "Reginaldo Morikawa";
-            lblEmail.Text = "morikawa77@gmail.com";
 
             lblNome.FontSize = 12;
             lblEmail.FontSize = 12;
@@ -109,23 +110,51 @@ namespace Contatos.Pages
 
         async void imgTapped(object sender, EventArgs e)
         {
-            Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
-            imgFoto.Source = ImageSource.FromStream(() => stream);
+            var opcao = await App.DialogoOpcoes("Escolha uma nova imagem:", "Fechar", "Câmera", "Galeria");
 
-            /* Salvar uri da img no banco NÃO TA FUNCIONANDO :/
-            var image = imgFoto.Source.GetValue(StreamImageSource.StreamProperty).ToString();
-            Usuario item = (Usuario)this.BindingContext;
-            item.Imagem = image;
-            //item.Id = 1;
-            await App.Database.SaveUsuarioAsync(item);
-            */
+            if (opcao == "Câmera") {
+                // Pega a foto tirada na câmera
+                arquivoMidia = await Contatos.Helpers.CameraHelper.TirarFotoAsync("foto");
+            } else if (opcao == "Galeria"){
+                // Pega foto da galeria
+                arquivoMidia = await Contatos.Helpers.CameraHelper.EscolheFotoAsync();
+            }
+
+            ExibirFoto();
         }
-        // IPicturePicker Interface Multiplataform from https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/dependency-service/photo-picker/
+
+        private async void ExibirFoto()
+        {
+            // Verifica se existe uma foto para exibição
+            if (arquivoMidia != null)
+            {
+                // Armazena o caminho onde esta a foto tirada
+                string caminhoFoto = arquivoMidia.Path;
+
+                // seta o source da imagem
+                imgFoto.Source = ImageSource.FromFile(caminhoFoto);
+                imgFoto.Aspect = Aspect.AspectFill;
+
+                // cria instancia do usuario para salvar no banco
+                Usuario item = new Usuario()
+                {
+                    Id = 1,
+                    Nome = lblNome.Text,
+                    Email = lblEmail.Text,
+                    Imagem = caminhoFoto
+                };
+
+                // salva a alteração no banco
+                await App.Database.SaveUsuarioAsync(item);
+            }
+        }
 
         async void usuarioTapped(object sender, EventArgs e)
         {
             await App.NavegacaoPagina((Page)Activator.CreateInstance(typeof(UsuarioEdicaoPage)));
 
         }
+
+
     }
 }

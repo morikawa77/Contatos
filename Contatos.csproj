@@ -58,6 +58,14 @@
     <EmbeddedResource Include="Resources\Imagens\foto.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FormularioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PainelUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -91,13 +99,19 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs" />
-    <Compile Include="IPicturePicker.cs" />
-    <Compile Include="IFileHelper.cs" />
     <Compile Include="Data\ContatosDB.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Pages\UsuarioEdicaoPage.xaml.cs">
       <DependentUpon>UsuarioEdicaoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FormularioUC.xaml.cs">
+      <DependentUpon>FormularioUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PainelUC.xaml.cs">
+      <DependentUpon>PainelUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CameraHelper.cs" />
+    <Compile Include="Helpers\IFileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -105,6 +119,7 @@
     <Folder Include="Resources\Imagens\" />
     <Folder Include="Resources\Icones\" />
     <Folder Include="Data\" />
+    <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLite-net">
@@ -128,9 +143,16 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>packages\Xamarin.Forms.2.4.0.38779\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\palette.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

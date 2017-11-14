@@ -14,7 +14,7 @@ namespace Contatos
     {
         // Atributos Globais
         // const atributo somente de leitura
-        public const string nomeApp = "Contatos"; 
+        public const string nomeApp = "Agenda"; 
         // Configuração da página mestre detalhe ativa
         public static MasterDetailPage PaginaMestreDetalhe { get; set; }
 
@@ -44,6 +44,39 @@ namespace Contatos
             // Fechar a página de menu
             App.PaginaMestreDetalhe.IsPresented = false;
             await PaginaMestreDetalhe.Detail.Navigation.PopToRootAsync();
+        }
+
+        // Dialogos
+
+        // Exibe uma mensagem de alerta em tela
+        public static async Task DialogoAlerta(
+            string titulo,
+            string mensagem,
+            string cancelar)
+        {
+            await App.Current.MainPage.DisplayAlert(titulo, mensagem, cancelar);
+        }
+
+        // Exibe uma mensagem de alerta em tela e volta o resultado
+        // Confirmar = true
+        // Cancelar = false
+        public static async Task<bool> DialogoAlerta(
+            string titulo,
+            string mensagem,
+            string confirmar,
+            string cancelar)
+        {
+            return await App.Current.MainPage.DisplayAlert(titulo, mensagem, confirmar, cancelar);
+        }
+
+        // Exibe um menu de opções 
+        // Ao escolher volta a opção (texto) escolhido
+        public static async Task<string> DialogoOpcoes(
+            string titulo,
+            string cancela,
+            params string[] opcoes)
+        {
+            return await App.Current.MainPage.DisplayActionSheet(titulo, cancela, null, opcoes);
         }
 
         public App()

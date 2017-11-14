@@ -68,7 +68,7 @@ namespace Contatos.Models
             }
         }
 
-        [MaxLength(1000), NotNull]
+        [MaxLength(600), NotNull]
         public string Imagem
         {
             get
@@ -92,4 +92,4 @@ namespace Contatos.Models
         }
 
     }
-}
+} 
